@@ -17,7 +17,7 @@ $config = array(
     ),
   array(
       'name'   => 'cluster server', // Optional name.
-      'host'   => 'redis://127.0.0.1:7000,redis://127.0.0.1:7001,redis://127.0.0.1:7002,redis://127.0.0.1:7003,redis://127.0.0.1:7004,redis://127.0.0.1:7005',
+      'host'   => ['127.0.0.1:7000','127.0.0.1:7001','127.0.0.1:7002','127.0.0.1:7003','127.0.0.1:7004','127.0.0.1:7005'],
       'cluster' => true,
       'filter' => '*',
       'scheme' => 'tcp', // Optional. Connection scheme. 'tcp' - for TCP connection, 'unix' - for connection by unix domain socket
