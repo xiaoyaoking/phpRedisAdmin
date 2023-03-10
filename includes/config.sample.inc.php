@@ -15,7 +15,18 @@ $config = array(
       // Optional Redis authentication.
       //'auth' => 'redispasswordhere' // Warning: The password is sent in plain-text to the Redis server.
     ),
+  array(
+      'name'   => 'cluster server', // Optional name.
+      'host'   => 'redis://127.0.0.1:7000,redis://127.0.0.1:7001,redis://127.0.0.1:7002,redis://127.0.0.1:7003,redis://127.0.0.1:7004,redis://127.0.0.1:7005',
+      'cluster' => true,
+      'filter' => '*',
+      'scheme' => 'tcp', // Optional. Connection scheme. 'tcp' - for TCP connection, 'unix' - for connection by unix domain socket
+      'path'   => '', // Optional. Path to unix domain socket. Uses only if 'scheme' => 'unix'. Example: '/var/run/redis/redis.sock'
+      'hide'   => false, // Optional. Override global setting. Hide empty databases in the database list.
 
+      // Optional Redis authentication.
+      //'auth' => 'redispasswordhere' // Warning: The password is sent in plain-text to the Redis server.
+    ),
     /*array(
       'host' => 'localhost',
       'port' => 6380
