@@ -118,7 +118,7 @@ if(isset($server['scheme']) && $server['scheme'] === 'unix' && $server['path']) 
   $redis = new Predis\Client(array('scheme' => 'unix', 'path' => $server['path']));
 } else {
   if (isset($server['cluster'])){ //New cluster configuration judgment
-    $redis = new Predis\Client(array('cluster' => $server['host'],'exceptions' => true));
+    $redis = new Predis\Client(array('cluster' =>  'redis://'.implode(',redis://', $server['host']),'exceptions' => true));
   }else{
     $redis = !$server['port'] ? new Predis\Client($server['host']) : new Predis\Client('tcp://'.$server['host'].':'.$server['port']);
   }
