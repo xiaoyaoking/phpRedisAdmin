@@ -117,7 +117,11 @@ if (!isset($config['showEmptyNamespaceAsKey'])) {
 if(isset($server['scheme']) && $server['scheme'] === 'unix' && $server['path']) {
   $redis = new Predis\Client(array('scheme' => 'unix', 'path' => $server['path']));
 } else {
-  $redis = !$server['port'] ? new Predis\Client($server['host']) : new Predis\Client('tcp://'.$server['host'].':'.$server['port']);
+  if (isset($server['cluster'])){ //New cluster configuration judgment
+    $redis = new Predis\Client(array('cluster' => $server['host'],'exceptions' => true));
+  }else{
+    $redis = !$server['port'] ? new Predis\Client($server['host']) : new Predis\Client('tcp://'.$server['host'].':'.$server['port']);
+  }
 }
 
 try {
